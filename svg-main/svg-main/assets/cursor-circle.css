@@ -1,0 +1,103 @@
+/* Custom Cursor Circle Styles */
+
+:root {
+  --cursor-color: #000000;
+  --cursor-size: 30px;
+  --cursor-enabled: true;
+}
+
+/* Hide default cursor when custom cursor is enabled */
+body.cursor-enabled {
+  cursor: none;
+}
+
+/* Cursor circle element */
+.cursor-circle {
+  position: fixed;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  border: 2px solid var(--cursor-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  transition: border-color 0.2s ease;
+  mix-blend-mode: screen;
+}
+
+/* Inner dot */
+.cursor-circle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: var(--cursor-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Cursor trail effect */
+@keyframes cursor-trail {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+.cursor-trail {
+  position: fixed;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  border: 2px solid var(--cursor-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.3;
+  animation: cursor-trail 0.6s ease-out forwards;
+}
+
+/* Color variants */
+:root[data-cursor-color="black"] {
+  --cursor-color: #000000;
+}
+
+:root[data-cursor-color="white"] {
+  --cursor-color: #ffffff;
+  --cursor-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-cursor-color="red"] {
+  --cursor-color: #ff0000;
+}
+
+:root[data-cursor-color="gray"] {
+  --cursor-color: #808080;
+}
+
+:root[data-cursor-color="teal"] {
+  --cursor-color: #008080;
+}
+
+/* Adjust shadow for visibility on different backgrounds */
+:root[data-cursor-color="white"] .cursor-circle {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+:root[data-cursor-color="black"] .cursor-circle {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+:root[data-cursor-color="red"] .cursor-circle {
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+:root[data-cursor-color="gray"] .cursor-circle {
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.4);
+}
+
+:root[data-cursor-color="teal"] .cursor-circle {
+  box-shadow: 0 0 15px rgba(0, 128, 128, 0.4);
+}

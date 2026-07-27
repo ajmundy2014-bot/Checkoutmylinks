@@ -1,0 +1,50 @@
+{
+  "app": {
+    "name": "Dark Shadow",
+    "nameJapanese": "暗影",
+    "description": "A dark and elegant application",
+    "version": "1.0.0"
+  },
+  "theme": {
+    "colors": [
+      {
+        "name": "red",
+        "label": "Red (赤)",
+        "hex": "#8b0000",
+        "description": "Deep red with falling snow"
+      },
+      {
+        "name": "teal",
+        "label": "Teal (深緑青)",
+        "hex": "#008080",
+        "description": "Teal ocean theme"
+      },
+      {
+        "name": "black",
+        "label": "Black (黒)",
+        "hex": "#000000",
+        "description": "Pure black classic"
+      },
+      {
+        "name": "white",
+        "label": "White (白)",
+        "hex": "#ffffff",
+        "description": "Clean white theme"
+      }
+    ],
+    "default": "red"
+  },
+  "branding": {
+    "appName": "暗影",
+    "appNameEnglish": "Dark Shadow",
+    "tagline": "影の中で",
+    "taglineEnglish": "In the shadows"
+  },
+  "features": {
+    "snowEffect": true,
+    "themeCustomization": true,
+    "settings": {
+      "backgroundColors": ["red", "teal", "black", "white"]
+    }
+  }
+}

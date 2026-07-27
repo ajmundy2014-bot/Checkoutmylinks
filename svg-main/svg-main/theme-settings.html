@@ -1,0 +1,69 @@
+<!-- Dark Shadow Theme Settings -->
+<div id="theme-settings" style="display: none; position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.9); border: 2px solid #ffffff; border-radius: 8px; padding: 20px; z-index: 1000; min-width: 250px;">
+  <div style="color: #ffffff; margin-bottom: 15px; font-weight: bold; font-size: 16px;">
+    🎨 Theme Color Settings
+  </div>
+  
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <button onclick="changeThemeColor('red')" style="padding: 10px; background: linear-gradient(135deg, #8b0000, #dc143c); color: white; border: 2px solid #ffffff; border-radius: 4px; cursor: pointer; font-weight: bold;">
+      🔴 Red (赤)
+    </button>
+    
+    <button onclick="changeThemeColor('teal')" style="padding: 10px; background: linear-gradient(135deg, #008080, #20b2aa); color: white; border: 2px solid #ffffff; border-radius: 4px; cursor: pointer; font-weight: bold;">
+      🔵 Teal (深緑青)
+    </button>
+    
+    <button onclick="changeThemeColor('black')" style="padding: 10px; background: linear-gradient(135deg, #000000, #1a1a1a); color: white; border: 2px solid #ffffff; border-radius: 4px; cursor: pointer; font-weight: bold;">
+      ⚫ Black (黒)
+    </button>
+    
+    <button onclick="changeThemeColor('white')" style="padding: 10px; background: linear-gradient(135deg, #ffffff, #f5f5f5); color: black; border: 2px solid #000000; border-radius: 4px; cursor: pointer; font-weight: bold;">
+      ⚪ White (白)
+    </button>
+  </div>
+  
+  <div style="margin-top: 15px; font-size: 12px; color: #cccccc; border-top: 1px solid #555555; padding-top: 10px;">
+    <div style="text-align: center; font-weight: bold; margin-bottom: 5px;">暗影</div>
+    <div style="text-align: center;">Dark Shadow v1.0</div>
+  </div>
+</div>
+
+<script>
+// Add settings toggle button to page
+document.addEventListener('DOMContentLoaded', function() {
+  const settingsBtn = document.createElement('button');
+  settingsBtn.innerHTML = '⚙️ Theme';
+  settingsBtn.style.cssText = 'position: fixed; bottom: 20px; right: 20px; padding: 12px 16px; background: rgba(0,0,0,0.8); color: #ffffff; border: 2px solid #ffffff; border-radius: 4px; cursor: pointer; z-index: 999; font-weight: bold; transition: all 0.3s ease;';
+  
+  settingsBtn.addEventListener('mouseover', function() {
+    settingsBtn.style.background = 'rgba(0,0,0,0.95)';
+    settingsBtn.style.transform = 'scale(1.05)';
+  });
+  
+  settingsBtn.addEventListener('mouseout', function() {
+    settingsBtn.style.background = 'rgba(0,0,0,0.8)';
+    settingsBtn.style.transform = 'scale(1)';
+  });
+  
+  settingsBtn.addEventListener('click', function() {
+    const settingsPanel = document.getElementById('theme-settings');
+    if (settingsPanel) {
+      settingsPanel.style.display = settingsPanel.style.display === 'none' ? 'block' : 'none';
+    }
+  });
+  
+  document.body.appendChild(settingsBtn);
+});
+
+// Ensure theme color function is available globally
+if (typeof window.changeThemeColor === 'undefined') {
+  window.changeThemeColor = function(color) {
+    const validColors = ['red', 'teal', 'black', 'white'];
+    if (validColors.includes(color)) {
+      document.documentElement.setAttribute('data-bg-theme', color);
+      localStorage.setItem('bgTheme', color);
+      console.log('Theme changed to:', color);
+    }
+  };
+}
+</script>
